@@ -1,0 +1,60 @@
+{
+    "response_code": "00",
+    "status": "success",
+    "data": {
+        "nasabah": {
+            "nasabah_id_1": "",
+            "nama_nasabah": "",
+            "alamat": "",
+            "telepon": "",
+            "jenis_kelamin": "",
+            "tempat_lahir": "",
+            "tgl_lahir": "",
+            "jenis_id": "",
+            "no_id": "",
+            "kode_group1": "",
+            "kode_group2": "",
+            "kode_group3": "",
+            "kode_agama": "",
+            "desa": "",
+            "kecamatan": "",
+            "kota_kab": "",
+            "provinsi": "",
+            "verifikasi": "",
+            "hp": "",
+            "tgl_register": "",
+            "nama_ibu_kandung": "",
+            "kode_pos": "",
+            "kode_kantor": "",
+            "user_id": ""
+        },
+        "tabung": {
+            "no_rekening": "",
+            "nasabah_id_2": "",
+            "kode_bi_pemilik": "",
+            "suku_bunga": "",
+            "persen_pph": "",
+            "tgl_register_tab": "",
+            "saldo_akhir": "",
+            "kode_group1": "",
+            "kode_group2": "",
+            "verifikasi_tab": "",
+            "status": "",
+            "kode_kantor_tab": "",
+            "kode_integrasi": "",
+            "kode_produk": "",
+            "user_id_tab": ""
+        },
+        "sys_daftar_user": {
+            "user_id": "",
+            "user_name": "",
+            "user_password": "",
+            "nama_lengkap": "",
+            "unit_kerja": "",
+            "jabatan": "",
+            "user_code": "",
+            "tgl_expired": "",
+            "user_web_password": ""
+        }
+    }
+  }
