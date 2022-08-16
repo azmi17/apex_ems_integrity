@@ -36,15 +36,15 @@ func (service *ApexServiceImpl) CreateApex(request web.ApexRequest) web.ApexResp
 	defer helper.CommitOrRollback(tx) // Handle if err happens then Rollback
 
 	nasabah := domain.Nasabah{}
-	nasabah.Nasabah_Id = "000001107"
+	nasabah.Nasabah_Id = request.KodeLkm
 	nasabah.Nama_Nasabah = request.Nama_Lembaga
 	nasabah.Alamat = request.Alamat
 	nasabah.Telpon = request.Telpon
 	nasabah.Jenis_Kelamin = "L"
 	nasabah.TempatLahir = "Bandung"
-	nasabah.TglLahir = "1997-09-17"
+	nasabah.TglLahir = time.Now()
 	nasabah.Jenis_Id = "1"
-	nasabah.No_Id = "001928477766641"
+	nasabah.No_Id = helper.GenerateIdKTP()
 	nasabah.Kode_Group1 = "1"
 	nasabah.Kode_Group2 = "01"
 	nasabah.Kode_Group3 = "001"
@@ -59,7 +59,7 @@ func (service *ApexServiceImpl) CreateApex(request web.ApexRequest) web.ApexResp
 	nasabah.Nama_Ibu_Kandung = "Ibu"
 	nasabah.Kodepos = "12345"
 	nasabah.Kode_Kantor = "001"
-	nasabah.UserId = 118
+	nasabah.UserId = request.User_Id
 	nasabah.Nama_Alias = request.Nama_Lembaga
 	nasabah.Status_Gelar = "0100"
 	nasabah.Jenis_Debitur = "0"
@@ -80,7 +80,7 @@ func (service *ApexServiceImpl) CreateApex(request web.ApexRequest) web.ApexResp
 
 	tabung := domain.Tabung{}
 	tabung.No_Rekening = request.KodeLkm
-	tabung.Nasabah_Id = "000001107"
+	tabung.Nasabah_Id = request.KodeLkm
 	tabung.Kode_Bi_Pemilik = "874"
 	tabung.Suku_Bunga = 0
 	tabung.Persen_Pph = 0
@@ -93,7 +93,7 @@ func (service *ApexServiceImpl) CreateApex(request web.ApexRequest) web.ApexResp
 	tabung.Kode_Kantor = "001"
 	tabung.Kode_Integrasi = "01"
 	tabung.Kode_Produk = "01"
-	tabung.UserId = 118
+	tabung.UserId = request.User_Id
 	tabung.Kode_Group3 = ""
 	tabung.Minimum = 0
 	tabung.Setoran_Minimum = 0
@@ -125,8 +125,9 @@ func (service *ApexServiceImpl) CreateApex(request web.ApexRequest) web.ApexResp
 	sysDaftarUser.Jabatan = "Echannel"
 	sysDaftarUser.User_Code = "1"
 	sysDaftarUser.Tgl_Expired = time.Now().AddDate(7, 0, 0)
-	sysDaftarUser.User_Web_Password = helper.HashSha1Pass()
-	sysDaftarUser.Flag = 0
+	sysDaftarUser.User_Web_Password_Hash, sysDaftarUser.User_Web_Password = helper.HashSha1Pass()
+	//sysDaftarUser.User_Web_Password_Hash, _ = helper.HashSha1Pass()
+	sysDaftarUser.Flag = 1
 	sysDaftarUser.Status_Aktif = 1
 	sysDaftarUser.Penerimaan = 0
 	sysDaftarUser.Pengeluaran = 0

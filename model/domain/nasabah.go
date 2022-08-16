@@ -12,7 +12,7 @@ type Nasabah struct {
 	Telpon                string
 	Jenis_Kelamin         string
 	TempatLahir           string
-	TglLahir              string
+	TglLahir              time.Time
 	Jenis_Id              string
 	No_Id                 string
 	Status_Gelar          string

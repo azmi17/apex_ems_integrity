@@ -9,28 +9,34 @@ import (
 )
 
 var (
-	lowerCharSet = "abcdefghij"
-	upperCharSet = "KLMNOPQRS"
+	// lowerCharSet = "abcdefghij"
+	upperCharSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	numberSet    = "0123456789"
-	allCharSet   = lowerCharSet + upperCharSet + numberSet
+	allCharSet   = upperCharSet + numberSet
 )
 
-func HashSha1Pass() string {
+func HashSha1Pass() (string, string) {
 
 	rand.Seed(time.Now().Unix())
-	minSpecialChar := 1
-	minNum := 1
+
+	minSpecialChar := 0
+	minNum := 0
 	minUpperCase := 1
 	passwordLength := 8
 
 	pwd := generatePassword(passwordLength, minSpecialChar, minNum, minUpperCase)
+
 	var sha = sha1.New()
 	sha.Write([]byte(pwd))
-	var encrypted = sha.Sum(nil)
+	var hashing = sha.Sum(nil)
 
-	var encryptedString = fmt.Sprintf("%x", encrypted)
+	var plainTextPass = string(pwd)
+	var hashingPass = fmt.Sprintf("%x", hashing)
 
-	return encryptedString
+	// plainTextPass := string(pwd)
+	// hashingPass := string(hashing)
+
+	return plainTextPass, hashingPass
 }
 
 func generatePassword(passwordLength, minSpecialChar, minNum, minUpperCase int) string {

@@ -13,5 +13,6 @@ type SysDaftarUser struct {
 	Tgl_Expired             time.Time
 	Flag                    int
 	Status_Aktif            int
+	User_Web_Password_Hash  string
 	User_Web_Password       string
 }

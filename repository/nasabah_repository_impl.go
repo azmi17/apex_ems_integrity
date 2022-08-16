@@ -65,3 +65,7 @@ func (repository *NasabahRepositoryImpl) CreateNasabah(tx *sql.Tx, nasabah domai
 	helper.FatalIfError(err)
 	return nasabah
 }
+
+func (repository *NasabahRepositoryImpl) GetMaxNasabahID() {
+
+}
